@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Console
+comment1.params=text
+comment1.target=void\ log(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ read()
+comment3.params=
+comment3.target=void\ logHASHUpdate()
+comment4.params=input
+comment4.target=byte[]\ getSHA(java.lang.String)
+comment5.params=hash
+comment5.target=java.lang.String\ toHexString(byte[])
+numComments=6
