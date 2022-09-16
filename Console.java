@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public final class Console
     public static String logHASH = "";
     public static String valueLogHASH = "";
     private static File logFile = initLogFile();
+
     public static void log(String text){
         System.out.println(text);
         log.add(text);
@@ -31,6 +33,98 @@ public final class Console
             nsae.printStackTrace();
         }
     }
+
+    public static void log(String nameOfVariable, int value){
+        String msg = "The value of the variable " + nameOfVariable + " is: " + value;
+        Console. log(msg);
+    }
+
+    public static void log(String nameOfVariable, Double value){
+        String msg = "The value of the variable " + nameOfVariable + " is: " + value;
+        Console. log(msg);
+    }
+
+    public static void log(String nameOfVariable, Float value){
+        String msg = "The value of the variable " + nameOfVariable + " is: " + value;
+        Console. log(msg);
+    }
+
+    public static void log(char[] array){
+        String msg = "[\n";
+        for(char c:array){
+            msg +=Character.toString(c);
+            msg += ",\n"; 
+        }
+        StringBuffer sb = new StringBuffer(msg);
+        sb.deleteCharAt(sb.length() -2);
+        msg = sb.toString();
+        msg += "]";
+        Console.log(msg);
+    }
+
+    public static void log(int[] intArray){
+        String[] array = convertToStringArr(intArray);
+        String msg = "[\n";
+        for(String c:array){
+            msg += c;
+            msg += ",\n"; 
+        }
+        StringBuffer sb = new StringBuffer(msg);
+        sb.deleteCharAt(sb.length() -2);
+        msg = sb.toString();
+        msg += "]";
+        Console.log(msg);
+    }
+
+    public static void log(Double[] doubleArray){
+        String[] array = convertToStringArr(doubleArray);
+        String msg = "[\n";
+        for(String c:array){
+            msg += c;
+            msg += ",\n"; 
+        }
+        StringBuffer sb = new StringBuffer(msg);
+        sb.deleteCharAt(sb.length() -2);
+        msg = sb.toString();
+        msg += "]";
+        Console.log(msg);
+    }
+
+    public static void log(Float[] floatArray){
+        String[] array = convertToStringArr(floatArray);
+        String msg = "[\n";
+        for(String c:array){
+            msg += c;
+            msg += ",\n"; 
+        }
+        StringBuffer sb = new StringBuffer(msg);
+        sb.deleteCharAt(sb.length() -2);
+        msg = sb.toString();
+        msg += "]";
+        Console.log(msg);
+    }
+
+    public static void log(int[] intArray, Boolean sort){
+        if(sort){
+            Arrays.sort(intArray);
+        }
+        Console.log(intArray);
+    }
+
+    public static void log(Double[] doubleArray, Boolean sort){
+        if(sort){
+            Arrays.sort(doubleArray);
+        }
+        Console.log(doubleArray);
+    }
+
+    public static void log(Float[] floatArray, Boolean sort){
+        if(sort){
+            Arrays.sort(floatArray);
+        }
+        Console.log(floatArray);
+    }
+        
 
     public static String read()throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -72,6 +166,30 @@ public final class Console
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    private static String[] convertToStringArr(int[] array){
+        String[] result = new String[array.length];
+        for(int i = 0; i < array.length; i++){
+            result[i] = Integer.toString(array[i]);
+        }
+        return result;
+    }
+
+    private static String[] convertToStringArr(Double[] array){
+        String[] result = new String[array.length];
+        for(int i = 0; i < array.length; i++){
+            result[i] = Double.toString(array[i]);
+        }
+        return result;
+    }
+
+    private static String[] convertToStringArr(Float[] array){
+        String[] result = new String[array.length];
+        for(int i = 0; i < array.length; i++){
+            result[i] = Float.toString(array[i]);
+        }
+        return result;
     }
     
     private static File initLogFile(){

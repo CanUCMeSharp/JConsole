@@ -1,6 +1,7 @@
 public class Test
 {
-    public void test() throws java.io.IOException {
-        Console.saveValueLog();
+    public static void main(String[] args) {
+       Double[] a = {13.4, 15.33};
+       Console.log(a);
     }
 }
